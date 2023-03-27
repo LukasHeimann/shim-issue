@@ -1,0 +1,12 @@
+{
+  "name": "my.app",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ui5/cli": "^3.0.5",
+    "ui5-task-zipper": "^0.7.4",
+    "unleash-proxy-client": "^2.4.3"
+  },
+  "scripts": {
+    "postinstall": "ui5 build preload --clean-dest --config ui5.yaml"
+  }
+}

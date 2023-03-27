@@ -1,0 +1,35 @@
+specVersion: "3.0"
+metadata:
+  name: my.app
+type: application
+framework:
+  name: SAPUI5
+  version: "1.112.1" # UI5 version
+builder:
+  settings:
+    includeDependency:
+      - "unleash-proxy-client"
+  customTasks:
+    - name: ui5-task-zipper
+      afterTask: generateVersionInfo
+      configuration:
+        archiveName: my.app
+        includeDependencies: true
+
+---
+specVersion: "3.0"
+kind: extension
+type: project-shim
+metadata:
+  name: my.app.thirdparty
+shims:
+  configurations:
+    unleash-proxy-client: # dependency name as defined in package.json
+      specVersion: "3.0"
+      type: module
+      metadata:
+        name: unleash-proxy-client
+      resources:
+        configuration:
+          paths:
+            "/lib/unleash-proxy-client/": "build"
